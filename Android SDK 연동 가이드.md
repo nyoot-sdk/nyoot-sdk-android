@@ -8,7 +8,7 @@ NYOOT Android SDK 설치가이드
 	* [proguard 설정](#proguard-설정-nyoot-sdk-포함된-class는-난독화-시키지-않도록-주의)
 	* [AndroidX 설정](#androidx-사용하는-경우)
 2. [NYOOT 연동하기](#2-nyoot-연동하기)
-	* [JAVA](#java-base-자세한-내용은-nyootsample-참조)
+	* [JAVA](#java-자세한-내용은-nyootsample-참조)
 	* [NYOOT 설정 방법](#nyoot-설정-방법)
 3. [Class Reference](#3-class-reference)
 
@@ -154,7 +154,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 
-### `NYOOT 설정방법`
+### `NYOOT 설정 방법`
 
 parameter|설 명
 ---|---
