@@ -4,15 +4,15 @@
 - 최신 버전의 Android Studio 사용을 권장합니다.
 - JDK11이상
 - Nyoot SDK는 Android 4.3(JellyBean, API Level 18) 이상 기기에서 동작합니다. 
-- 또한 [Google Play의 대상 API 레벨 요구사항](https://developer.android.com/distribute/best-practices/develop/target-sdk?hl=ko)을 충족하기 위해서는 targetSdkVersion 31이상, compileSdkVersion 31이상을 적용하여야 합니다.(2022년 8월부터 적용)
+- 또한 [Google Play의 대상 API 레벨 요구사항](https://developer.android.com/distribute/best-practices/develop/target-sdk?hl=ko)을 충족하기 위해서는 targetSdkVersion 33이상, compileSdkVersion 33이상을 적용하여야 합니다.(2023년 8월부터 적용)
 
 Android SDK 연동
 ----
 Nyoot Android SDK를 연동하기 위해서는 아래와 같은 사전 절차가 필요합니다.
 1) Nyoot SDK 연동 담당자(nyoot@doohub.co.kr)에게 연락하여 Nyoot Android SDK 연동 요청을 합니다.
-2) 매체 등록 후 담당자를 통해 APP 소유자에게 발급되는 고유 ID(publihser id, publisher user id)를 제공 받습니다.
+2) 매체 등록 후 담당자를 통해 APP 소유자에게 발급되는 고유 ID(publihser id)를 제공 받습니다.
 
-자세한 SDK 연동 방법은 [Android SDK 연동 가이드]() 에서 확인하실 수 있습니다.
+자세한 SDK 연동 방법은 [Android SDK 연동 가이드](https://github.com/nyoot-sdk/nyoot-sdk-android/blob/main/Android%20SDK%20%EC%97%B0%EB%8F%99%20%EA%B0%80%EC%9D%B4%EB%93%9C.md) 에서 확인하실 수 있습니다.
 
 Release Note
 ----
@@ -35,8 +35,8 @@ Release Note
 3. 개인정보 처리방침 (Pivacy Policy) 업데이트 
    - 3rd Party SDK 가 수집하는 항목에서 디바이스 레벨의 App set ID 항목이 추가 되었습니다. 귀사 서비스의 개인정보 처리방침에 추가가 필요한 경우 업데이트를 부탁 드립니다.
 
-4. target api level 31 버전 업
-   - 업데이트 된 앱 (Google Play에 이미 게시된 앱의 새로운버전)은 2022년 11월 1일까지 Android 12(api 31) 수준으로 상향해야 합니다. Nyoot SDK 1.0.0 버전은 Android 12에 최적화 API Level 31로 적용 완료된 점 안내드립니다. 최적화 SDK를 적용하지 않으면 일부 기능이 정상동작하지 않거나, 앱이 강제로 종료될 수 있으므로 Nyoot SDK 최신버전으로 업데이트 권장드립니다. 
+4. target api level 33 버전 업
+   - 신규 앱 또는 업데이트 된 앱 (Google Play에 이미 게시된 앱의 새로운버전)은 2023년 8월 31일까지 Android 13(api 33) 수준으로 상향해야 합니다. Nyoot SDK 1.0.0 버전은 Android 13에 최적화 API Level 33로 적용 완료된 점 안내드립니다. 최적화 SDK를 적용하지 않으면 일부 기능이 정상동작하지 않거나, 앱이 강제로 종료될 수 있으므로 Nyoot SDK 최신버전으로 업데이트 권장드립니다. 
 
 5. android:exported 속성 선언
    - 추가적으로 앱이 Android 12 이상을 타겟팅하는 경우 AndroidManifest.xml에 등록된 Activity가 intent-filter 태그를 포함하고 있으면 android:exported 속성을 명시적으로 선언해야합니다.(intent-filter를 사용하지만 명시적으로 선언된 값이 없으면 Android 12 이상을 실행하는 기기에 앱을 설치할 수 없습니다.) 대부분의 경우 exported="false"로 설정하지만, MAIN/LAUNCHER Activity는 android:exported="true"로 설정을 추가해주시면 됩니다.
