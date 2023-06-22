@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            url "s3://repo.nyoot.co.kr/releases"
+            credentials(AwsCredentials) {
+                accessKey "AKIATAT4GC3TACMGQQS4"
+                secretKey "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"
+            }
+        }
+    }
+}
+rootProject.name = "NyootSample"
+include ':app'
