@@ -5,6 +5,7 @@ NYOOT Android SDK 설치가이드
 1. [NYOOT 시작하기](#1-nyoot-시작하기)
 	* [NYOOT SDK 추가](#nyoot-sdk-추가)
 	* [AndroidManifest.xml 속성 지정](#androidmanifestxml-속성-지정)
+	* [Test mode 설정](#test-mode-설정)
 	* [proguard 설정](#proguard-설정-nyoot-sdk-포함된-class는-난독화-시키지-않도록-주의)
 	* [AndroidX 설정](#androidx-사용하는-경우)
 2. [NYOOT 연동하기](#2-nyoot-연동하기)
@@ -72,11 +73,19 @@ dependencies {
 <activity android:exported="true" />
 ``` 
 
+#### Test mode 설정
+`Nyoot SDK 가 Test mode 에서 동작하길 원하는 경우 설정`
+```java
+Nyoot.init(this, true);
+```
+
+
 ### proguard 설정 nyoot SDK 포함된 Class는 난독화 시키지 않도록 주의
 ```clojure
 proguard-rules.pro ::
 -keep class kr.co.nyoot.sdk.core.Nyoot {
     public static *** init(***);
+    public static *** init(***, ***);
     public static *** setListener(***);
     public static *** setUserInfo(***, ***);
     public static *** showOfferWall(***);
@@ -106,8 +115,11 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // 1. 초기화 (디바이스 정보 가져오기)
+    // 1. 초기화 (디바이스 정보 가져오기, test mode 설정)
     Nyoot.init(this);
+
+    // 1-1. test mode 적용 시 
+    // Nyoot.init(this, true);
 
     // 2. Nyoot 사용자 설정
     Nyoot.setUserInfo("publisher_id", "publisher_user_id");
@@ -153,7 +165,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ```
 
-
 ### `NYOOT 설정 방법`
 
 parameter|설 명
@@ -167,7 +178,8 @@ publisher_user_id|APP 사용자 식별 ID입니다. 필수 값이며 만약, 설
 
 Nyoot||
 ---|---
-init(Context)   |Nyoot 설정 초기화
+init(Context)   |Nyoot 설정 초기화(default)
+init(Context, boolean isTest)   |Nyoot 설정 초기화, isTest:true 설정 시 테스트모드 적용
 setUserInfo(String publisher_id, String publisher_user_id)  |Nyoot 사용자 설정
 setListener(NyootListener)  |NyootListener 지정
 showOfferWall(Context)  |Nyoot 페이지 오픈
